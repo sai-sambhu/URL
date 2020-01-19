@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block body_block %}
+
+<div class="jumbotron">
+<form  method="POST">
+{% csrf_token %}
+<label for="URL">URL:</label>
+<input type="text" name="URL" placeholder="Enter URL here" autocomplete="off">
+<input type="submit" name="" value="Submit">
+</form>   
+
+{% if set %}
+
+<h5>Hi,<br>
+This is to confirm that the Result for URL {{ URL }} you have entered us to check for phishing website:<br><br><br>
+After analyzing the structure of the Website<br> 
+Prediction by Decision Tree is {{ y_pred }} with {{ D_pred }} Prediction {% if y_pred == 'good' %}<span style='font-size:50px;color:green'>&#10004;</span>{% else %}<span style='font-size:50px;color:red'>&#10008;</span>{% endif %}<br><br><br>
+After analyzing the content of the webpage with NLP the<br> 
+Prediction by MultinomialNavieBaye is {{ y_pred2 }} with {{ N_pred }} Prediction{% if y_pred2 == 'good' %}<span style='font-size:50px;color:green'>&#10004;</span>{% else %}<span style='font-size:50px;color:red'>&#10008;</span>{% endif %}<br><br><br>
+After analyzing the URL pattern <br>
+
+Prediction by TfidfVectorizer is {{ pattern }} {% if pattern == 'good' %}<span style='font-size:50px;color:green'>&#10004;</span>{% else %}<span style='font-size:50px;color:red'>&#10008;</span>{% endif %}<br><br><br>
+
+Prediction Done.<br><br><br>
+
+Regards<br>
+Fraud Website Dectector</h5>
+
+{% endif %}
+
+{% if not_set %}
+<h3>Hi, Please Provide a Valid URL, or URL page not exist</h3>
+
+<br>
+<br>
+<h5>
+Even if the Webpage does not exisit We can give a prediction on URL pattern.<br><br>
+
+After analyzing the URL pattern of {{ URL }}<br>
+Prediction by TfidfVectorizer is{{ pattern }} {% if pattern == 'good' %}<span style='font-size:50px;color:green'>&#10004;</span>{% else %}<span style='font-size:50px;color:red'>&#10008;</span>{% endif %}<br><br><br>
+</h5>
+
+{% endif %}
+
+</div>
+
+{% endblock %}
+

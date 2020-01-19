@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Phising URL||Detection</title>
+<!-- Custom CSS -->
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="{% static 'css/STYLEBASE.css' %}">
+
+<style>
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="topnav" id="myTopnav">
+  <a href="{% url 'index' %}" class="active">Home</a>
+  <a href="admin/" >Admin</a>
+  <a href="{% url 'register' %}" >Sign Up</a>
+  
+  
+  {% if user.is_authenticated %}
+  <a href="{% url 'URL_page' %}#">URL Detection</a>
+  <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+  <a href="{% url 'user_login' %}">Login</a>
+  {% endif %}
+  
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+<br>
+<div class="container">
+{% block body_block %}
+{% endblock %}
+</div>
+
+<div class="footer">
+  <p>Project By:- Sai Reddy, 17261A0551, MGIT <a href="/rigister" style="color:black">Z</a></p>
+</div>
+<script src="{% static 'js/appbase.js' %}"></script>
+
+
+
+</body>
+
+
+
+</html>

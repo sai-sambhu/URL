@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body_block %}
+
+<div class="jumbotron">
+   
+  <h1>Welcome to Phishing URL Detection <br>Your are on the rigth path, Login to Access the page</h1>
+</div>
+<div class="jumbotron">
+   
+  <h1>We Use AI and NLP to Find Phishing Websites</h1><br>
+  <h2>We Use Decision Tree regression for Analysing the Structure of Webpages, with <br>Trainset accuracy:{{ DecisonTrain }}% <br>Testset accuracy:{{ DecisionTEST }}%<br><br>
+      We Use MultiNomial Naive Baye Alogrithm for Analysing the content of a webpage using NLP with <br>Trainset accuracy:{{ NLPTrain }}% <br>Testset accuracy:{{ NLPTest }}%<br><br>
+	  We use TfidfVectorizer Regression for Analysing the URL pattern with<br>Accuracy: 91.2232% 
+  </h2>
+</div>
+
+{% endblock %}
